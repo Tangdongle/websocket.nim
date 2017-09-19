@@ -28,6 +28,13 @@ type
 
     data: string ## App data
 
+  AsyncWebSocketObj = object of RootObj
+    sock*: AsyncSocket
+    protocol*: string
+    isClient*: bool
+
+  AsyncWebSocket* = ref AsyncWebSocketObj
+
 proc makeFrame*(f: Frame): string =
   ## Generate valid websocket frame data, ready to be sent over the wire.
   ## This is useful for rolling your own impl, for example
